@@ -3,9 +3,9 @@
 import { useState, FormEvent } from 'react';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { useAuth } from '@/context/AuthContext';
+import { useAuth } from '@/context/AuthContext';import { Suspense } from 'react';
 
-export default function LoginPage() {
+function LoginForm() {
   const { login } = useAuth();
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -146,5 +146,13 @@ export default function LoginPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense fallback={<div className="container mx-auto px-4 py-12 max-w-5xl text-center">Loading login...</div>}>
+      <LoginForm />
+    </Suspense>
   );
 }
