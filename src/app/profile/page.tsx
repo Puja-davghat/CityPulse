@@ -7,7 +7,7 @@ import { User, Heart, Compass, Shield, Download, LogOut, Key, Trash2, Navigation
 import Link from 'next/link';
 
 export default function ProfilePage() {
-  const { user, logout, isAuthConfigured } = useAuth();
+  const { user, logout } = useAuth();
   const [activeTab, setActiveTab] = useState<'details' | 'saved' | 'trips' | 'security'>('details');
   const [savedPlaces, setSavedPlaces] = useState<Place[]>([]);
   const [exportLoading, setExportLoading] = useState(false);
